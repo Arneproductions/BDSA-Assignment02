@@ -9,9 +9,9 @@ namespace Assignment02.Tests
         public static TheoryData<Student, Status> CtorStudents => new TheoryData<Student, Status>
         {
             {new Student {Id = 1, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now.AddDays(1)}, Status.New},
-            {new Student {Id = 2, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now}, Status.Active},
-            {new Student {Id = 2, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now, EndDate = DateTime.Now}, Status.Dropout},
-            {new Student {Id = 2, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now, GraduationDate = DateTime.Now}, Status.Graduated}
+            {new Student {Id = 2, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now.AddDays(-1)}, Status.Active},
+            {new Student {Id = 2, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now.AddDays(-1), EndDate = DateTime.Now}, Status.Dropout},
+            {new Student {Id = 2, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now.AddDays(-1), GraduationDate = DateTime.Now}, Status.Graduated}
         };
 
         [Theory]
@@ -26,6 +26,8 @@ namespace Assignment02.Tests
             Assert.NotEqual(DateTime.MinValue, student.StartDate);
             Assert.Equal(expectedStatus, student.Status);
         }
+
+
 
         [Fact]
         public void ToString_NewOrActiveStudent_ReturnStringWithGeneralInfoAndStartDate()
