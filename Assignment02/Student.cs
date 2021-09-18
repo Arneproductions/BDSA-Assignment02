@@ -12,22 +12,27 @@ namespace Assignment02
         { 
             get
             {
-                // if (GraduationDate.HasValue || _endDate.HasValue){
-                //     if (GraduationDate.HasValue) return Status.Graduated;
-                //     else return Status.Dropout;
-                // }
-                // else if (DateTime.Now > )
-
-                throw new NotImplementedException();
+                DateTime now = DateTime.Now;
+                if(StartDate > now)
+                    return Status.New;
+                else if(!_endDate.HasValue && !_graduationDate.HasValue)
+                    return Status.Active;
+                else if (_endDate <= now)
+                    return Status.Dropout;
+                else if (_graduationDate <= now)
+                    return Status.Graduated;
+                else 
+                    return Status.Active;
             } 
         }
 
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate { get => _endDate.GetValueOrDefault(); set => _endDate = value; }
         private DateTime? _endDate;
 
-        public DateTime GraduationDate { get; set; }
+        public DateTime GraduationDate { get => _graduationDate.GetValueOrDefault(); set => _graduationDate = value; }
         private DateTime? _graduationDate;
+
 
         public override string ToString()
         {
