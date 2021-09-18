@@ -31,28 +31,29 @@ namespace Assignment02
         { 
             get
             {
-                if (GraduationDate.HasValue || EndDate.HasValue){
-                    if (GraduationDate.HasValue) return Status.Graduated;
-                    else return Status.Dropout;
-                }
-                else if (DateTime.Now > )
+                // if (GraduationDate.HasValue || _endDate.HasValue){
+                //     if (GraduationDate.HasValue) return Status.Graduated;
+                //     else return Status.Dropout;
+                // }
+                // else if (DateTime.Now > )
+
+                throw new NotImplementedException();
             } 
         }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; private set; }
-        public DateTime? GraduationDate { get; private set; }
 
-        private void SetStatus(DateTime startDate, DateTime endDate, DateTime graduationDate)
-        {
-            
-        }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        private DateTime? _endDate;
+
+        public DateTime GraduationDate { get; set; }
+        private DateTime? _graduationDate;
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"Id: {Id} Name: {GivenName} {Surname} Status: {Status} Start date: {StartDate}");
-            if (EndDate.HasValue) sb.Append($" End date {EndDate}");
-            if (GraduationDate.HasValue) sb.Append($" Graduation date {GraduationDate}");
+            if (_endDate.HasValue) sb.Append($" End date {EndDate}");
+            if (_graduationDate.HasValue) sb.Append($" Graduation date {GraduationDate}");
             return sb.ToString();            
         }
     }
