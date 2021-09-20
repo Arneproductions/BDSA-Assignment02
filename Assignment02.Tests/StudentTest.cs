@@ -15,7 +15,7 @@ namespace Assignment02.Tests
             {new Student {Id = 5, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now.AddDays(-1), EndDate = DateTime.Now.AddDays(-2), GraduationDate = DateTime.Now}, Status.Graduated},
             {new Student {Id = 6, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now.AddDays(-1), EndDate = DateTime.Now.AddDays(3), GraduationDate = DateTime.Now}, Status.Graduated},
             {new Student {Id = 7, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now.AddDays(-1), EndDate = DateTime.Now.AddDays(-1), GraduationDate = DateTime.Now}, Status.Dropout},
-            {new Student {Id = 7, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Now, EndDate = DateTime.Now, GraduationDate = DateTime.Now}, Status.Graduated}
+            {new Student {Id = 7, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Today, EndDate = DateTime.Today, GraduationDate = DateTime.Today}, Status.Graduated}
         };
 
         [Theory]
