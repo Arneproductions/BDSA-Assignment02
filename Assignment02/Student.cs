@@ -12,35 +12,36 @@ namespace Assignment02
         { 
             get
             {
+                Status status;
+
                 DateTime now = DateTime.Now;
                 if(StartDate > now)
-                    return Status.New;
-                else if(!_endDate.HasValue && !_graduationDate.HasValue)
-                    return Status.Active;
-                else if (_endDate <= now)
-                    return Status.Dropout;
-                else if (_graduationDate <= now)
-                    return Status.Graduated;
-                else 
-                    return Status.Active;
+                    status = Status.New;
+                else
+                    status = Status.Active;
+
+                if(Graduates && GraduationDate <= now)
+                    status = Status.Graduated;
+                else if(EndDate >= StartDate && EndDate <= now)
+                    status = Status.Dropout;
+
+                return status;
             } 
         }
 
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get => _endDate.GetValueOrDefault(); set => _endDate = value; }
-        private DateTime? _endDate;
+        public DateTime EndDate { get; set; }
 
-        public DateTime GraduationDate { get => _graduationDate.GetValueOrDefault(); set => _graduationDate = value; }
-        private DateTime? _graduationDate;
+        public DateTime GraduationDate { get; set; }
+        private DateTime _graduationDate;
+
+        private bool Graduates => GraduationDate >= StartDate && ((EndDate < StartDate && GraduationDate > EndDate) || (EndDate >= StartDate && GraduationDate <= EndDate));
+        
 
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append($"Id: {Id} Name: {GivenName} {Surname} Status: {Status} Start date: {StartDate}");
-            if (_endDate.HasValue) sb.Append($" End date {EndDate}");
-            if (_graduationDate.HasValue) sb.Append($" Graduation date {GraduationDate}");
-            return sb.ToString();            
+            return $"Id: {Id}, Name: {GivenName} {Surname}, Status: {Status}, Start date: {StartDate}, End date {EndDate}, Graduation date {GraduationDate}";
         }
     }
 }
