@@ -36,9 +36,9 @@ namespace Assignment02.Tests
         [Fact]
         public void ToString_NewOrActiveImmutableStudent_ReturnStringWithGeneralInfoAndStartDate()
         {
-            var ImmutableStudent = new ImmutableStudent{Id = 1, GivenName = "Peter", Surname = "Jensen", StartDate = DateTime.Now};
-            string expected = $"Id: 1, Name: Peter Jensen, Status: Active, Start date: {ImmutableStudent.StartDate}, End date {ImmutableStudent.EndDate}, Graduation date {ImmutableStudent.GraduationDate}";
-            Assert.Equal(expected,ImmutableStudent.ToString());
+            var immutableStudent = new ImmutableStudent{Id = 1, GivenName = "Peter", Surname = "Jensen", StartDate = DateTime.Now};
+            string expected = $"Id: 1, Name: Peter Jensen, Status: Active, Start date: {immutableStudent.StartDate}, End date {immutableStudent.EndDate}, Graduation date {immutableStudent.GraduationDate}";
+            Assert.Equal(expected,immutableStudent.ToString());
         }
         
         
