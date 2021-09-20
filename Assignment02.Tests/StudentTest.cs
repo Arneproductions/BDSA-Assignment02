@@ -37,7 +37,7 @@ namespace Assignment02.Tests
         public void ToString_NewOrActiveStudent_ReturnStringWithGeneralInfoAndStartDate()
         {
             var student = new Student{Id = 1, GivenName = "Peter", Surname = "Jensen", StartDate = DateTime.Now};
-            string expected = $"Id: 1 Name: Peter Jensen Status: New Start date: {student.StartDate}";
+            string expected = $"Id: 1, Name: Peter Jensen, Status: Active, Start date: {student.StartDate}, End date {student.EndDate}, Graduation date {student.GraduationDate}";
             Assert.Equal(expected,student.ToString());
         }
         
