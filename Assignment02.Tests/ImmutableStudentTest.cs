@@ -31,6 +31,31 @@ namespace Assignment02.Tests
             Assert.Equal(expectedStatus, ImmutableStudent.Status);
         }
 
+        [Fact]
+        public void Equal_TwoDifferentInstancesWithSameValues_ReturnTrue()
+        {
+            ImmutableStudent student1 = new ImmutableStudent {Id = 7, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Today, EndDate = DateTime.Today, GraduationDate = DateTime.Today};
+            ImmutableStudent student2 = new ImmutableStudent {Id = 7, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Today, EndDate = DateTime.Today, GraduationDate = DateTime.Today};
+            
+            Assert.Equal(student1, student2);
+        }
+        
+        [Fact]
+        public void Equal_InstanceEqualsItself_ReturnTrue()
+        {
+            ImmutableStudent student1 = new ImmutableStudent {Id = 7, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Today, EndDate = DateTime.Today, GraduationDate = DateTime.Today};
+            
+            Assert.Equal(student1, student1);
+        }
+
+        [Fact]
+        public void Equal_TwoDifferentInstancesWithDifferentValues_ReturnFalse()
+        {
+            ImmutableStudent student1 = new ImmutableStudent {Id = 8, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Today, EndDate = DateTime.Today, GraduationDate = DateTime.Today};
+            ImmutableStudent student2 = new ImmutableStudent {Id = 7, GivenName = "Test", Surname = "Testesen", StartDate = DateTime.Today, EndDate = DateTime.Today, GraduationDate = DateTime.Today};
+            
+            Assert.NotEqual(student1, student2);
+        }
 
 
         [Fact]
